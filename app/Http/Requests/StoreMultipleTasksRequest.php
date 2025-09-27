@@ -1,35 +1,35 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreMultipleTasksRequest extends FormRequest
 {
-    public function authorize(): bool
+    public function authorize()
     {
-        return true; // auth check kora optional, change as needed
+        return true;
     }
 
-    public function rules(): array
+    public function rules()
     {
         return [
-            'tasks' => ['required', 'array', 'min:1'], // must have at least 1 task
-            'tasks.*.title' => ['required', 'string', 'max:255'], // each task must have a title
-            'tasks.*.description' => ['nullable', 'string'],
-            'tasks.*.due_date' => ['nullable', 'date'],
+            'tasks' => 'required|array|min:1',
+            'tasks.*.title' => 'required|string|max:255',
+            'tasks.*.description' => 'required|string|max:1000',
+            'tasks.*.due_date' => 'required|date|after_or_equal:today',
         ];
     }
 
-    public function messages(): array
+    public function messages()
     {
         return [
-            'tasks.required' => 'You must provide at least one task.',
-            'tasks.array' => 'Tasks must be an array.',
             'tasks.*.title.required' => 'Each task must have a title.',
-            'tasks.*.title.string' => 'Task title must be a string.',
-            'tasks.*.title.max' => 'Task title must not exceed 255 characters.',
+            'tasks.*.title.max' => 'Title may not exceed 255 characters.',
+            'tasks.*.description.required' => 'Each task must have a description.',
+            'tasks.*.description.max' => 'Description may not exceed 1000 characters.',
+            'tasks.*.due_date.required' => 'Each task must have a due date.',
             'tasks.*.due_date.date' => 'Due date must be a valid date.',
+            'tasks.*.due_date.after_or_equal' => 'Due date cannot be in the past.',
         ];
     }
 }
