@@ -29,7 +29,7 @@ This project demonstrates:
 
 ### Backend (Laravel)
 1. Clone repository:
-   git clone <backend-repo-url>
+   git clone https://github.com/Shakil7979/task-management-api.git
    cd task-management-api
 
 2. Install dependencies:
