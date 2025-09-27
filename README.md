@@ -18,8 +18,10 @@ This project demonstrates:
 ## 2️⃣ Table of Contents
 - Setup
 - Architecture
-- API Documentation 
+- API Documentation
+- Frontend Integration
 - Scalability & Optimization
+<!-- - Video Demonstration -->
 
 ---
 
@@ -49,7 +51,20 @@ This project demonstrates:
 
 6. Start backend server:
    php artisan serve
- 
+
+### Frontend (Vue SPA)
+1. Navigate to frontend folder:
+   cd frontend
+
+2. Install dependencies:
+   npm install
+
+3. Run development server:
+   npm run dev
+
+SPA will be available at http://localhost:5173
+
+---
 
 ## 4️⃣ Architecture
 
@@ -94,15 +109,32 @@ Validation Error Response:
   }
 }
 
---- 
+---
 
-## 6️⃣ Scalability & Optimization
+## 6️⃣ Frontend Integration
+
+- Import TaskComponent.vue in App.vue  
+- Use component: <TaskComponent />  
+- Axios posts to /api/tasks  
+- Toastr for notifications:
+  - Success: window.$toastr.success(...)
+  - Validation Error: window.$toastr.error(...)  
+- Dynamic repeater + reset form after success  
+
+---
+
+## 7️⃣ Scalability & Optimization
 
 Database Optimization
 - Bulk insert in chunks
 - Transaction ensures atomic insertion
 - Fewer queries for large datasets
- 
+
+Frontend Optimization
+- SPA prevents full page reload
+- Async Axios requests
+- Toastr prevents DOM blocking on errors
+
 Extensibility
 - Add task categories, priorities
 - Backend handles large datasets efficiently
@@ -111,6 +143,6 @@ Extensibility
 ---
 
 ## Author
-- Name: Sadbin Rabbi
+- Name: Sadbin
 - Role: Laravel & Vue Developer  
 - Contact: shakilcoding@gmail.com
