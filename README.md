@@ -68,13 +68,13 @@ SPA will be available at http://localhost:5173
 
 ## 4️⃣ Architecture
 
-Backend (Laravel)
-- REST API with /api/tasks endpoint
-- Validation via StoreMultipleTasksRequest
+**Backend (Laravel)**
+- REST API with `/api/tasks` endpoint
+- Validation via `StoreMultipleTasksRequest`
 - Bulk insert with chunking (500 rows per chunk)
 - Transaction ensures atomic insert
 
-Frontend (Vue SPA + Tailwind)
+**Frontend (Vue SPA + Tailwind)**
 - Dynamic repeater form to add multiple tasks
 - Add/remove tasks without page reload
 - Axios for API calls
@@ -85,9 +85,9 @@ Frontend (Vue SPA + Tailwind)
 
 ## 5️⃣ API Documentation
 
-POST /api/tasks
+**POST /api/tasks**
 
-Request Body (JSON):
+**Request Body (JSON):**
 {
   "tasks": [
     { "title": "Task 1", "description": "Description 1", "due_date": "2025-09-30" },
@@ -95,13 +95,13 @@ Request Body (JSON):
   ]
 }
 
-Success Response:
+**Success Response:**
 {
   "status": "success",
   "message": "2 tasks created successfully"
 }
 
-Validation Error Response:
+**Validation Error Response:**
 {
   "message": "The tasks.1.title field is required.",
   "errors": {
@@ -113,29 +113,29 @@ Validation Error Response:
 
 ## 6️⃣ Frontend Integration
 
-- Import TaskComponent.vue in App.vue  
-- Use component: <TaskComponent />  
-- Axios posts to /api/tasks  
+- Import `TaskComponent.vue` in `App.vue`  
+- Use component: `<TaskComponent />`  
+- Axios posts to `/api/tasks`  
 - Toastr for notifications:
-  - Success: window.$toastr.success(...)
-  - Validation Error: window.$toastr.error(...)  
+  - Success: `window.$toastr.success(...)`
+  - Validation Error: `window.$toastr.error(...)`  
 - Dynamic repeater + reset form after success  
 
 ---
 
 ## 7️⃣ Scalability & Optimization
 
-Database Optimization
+**Database Optimization**
 - Bulk insert in chunks
 - Transaction ensures atomic insertion
 - Fewer queries for large datasets
 
-Frontend Optimization
+**Frontend Optimization**
 - SPA prevents full page reload
 - Async Axios requests
 - Toastr prevents DOM blocking on errors
 
-Extensibility
+**Extensibility**
 - Add task categories, priorities
 - Backend handles large datasets efficiently
 - Frontend can easily extend to more SPA components
