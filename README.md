@@ -85,6 +85,22 @@ SPA will be available at http://localhost:5173
 
 ## 5️⃣ API Documentation
 
+## API Testing (Postman)
+
+When testing the API using **Postman**, always make sure to send the following headers:
+
+| Key           | Value                |
+|---------------|----------------------|
+| Content-Type  | application/json     |
+| Accept        | application/json     |
+
+### Example Request
+**POST** `http://127.0.0.1:8000/api/tasks`
+
+**Headers:**
+Content-Type: application/json
+Accept: application/json
+
 **POST /api/tasks**
 
 **Request Body (JSON):**

@@ -10,9 +10,12 @@ use Throwable;
 
 class TaskController extends Controller
 {
-    /**
-     * Store multiple tasks
-     */
+    public function index()
+    {
+        return response()->json([
+            'tasks' => Task::orderBy('id', 'desc')->get()
+        ]);
+    }
     public function store(StoreMultipleTasksRequest $request)
     {
         $tasks = $request->input('tasks', []);

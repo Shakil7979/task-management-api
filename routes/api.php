@@ -14,7 +14,7 @@ use App\Http\Controllers\Api\TaskController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */ 
-
+Route::get('/tasks', [TaskController::class, 'index']);
 Route::post('/tasks', [TaskController::class, 'store']);
 
 
